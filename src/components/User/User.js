@@ -1,12 +1,18 @@
 import React from 'react';
 import { IconButton } from '../../base-components';
 
-function User({ id, actions }) {
+function User({
+  id,
+  actions,
+  firstName,
+  lastName,
+  isFriend
+}) {
   return (
     <div className="user" key={id}>
         <div className="details">
-            <div className="name">Ashok Peeta</div>
-            <div className="relation">is your friend</div>
+            <div className="name">{firstName}</div>
+            <div className="relation">{lastName}</div>
         </div>
         <div className="actions">
           {
