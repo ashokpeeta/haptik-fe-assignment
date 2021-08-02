@@ -8,11 +8,13 @@ function User({ id, actions }) {
             <div className="name">Ashok Peeta</div>
             <div className="relation">is your friend</div>
         </div>
-        {
+        <div className="actions">
+          {
             actions?.length > 0 && actions.map((action) => {
                 return <IconButton {...action} />
             })
-        }
+          }
+        </div>
     </div>
   );
 }

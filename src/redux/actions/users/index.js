@@ -7,13 +7,29 @@ const mockUserData = [
     id: uuidv4(),
     firstName: 'Johnathan',
     lastName: 'Wick',
-    isFriend: true
+    isFriend: true,
+    actions: [
+      {
+        type: 'non-favourite'
+      },
+      {
+        type: 'delete'
+      }
+    ]
   },
   {
     id: uuidv4(),
     firstName: 'Amethius',
     lastName: 'Truebourn',
-    isFriend: false
+    isFriend: false,
+    actions: [
+      {
+        type: 'non-favourite'
+      },
+      {
+        type: 'delete'
+      }
+    ]
   },
 ]
 
