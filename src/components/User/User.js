@@ -29,7 +29,7 @@ function User({
             actions?.length > 0 && actions.map((action, actionIndex) => {
                 return <IconButton {...action} key={action.id} onClick={() => {
                   let fn = action.type === 'delete' ? deleteFriend : toggleFavoriteFriend
-                  fn(userIndex, actionIndex)
+                  fn(id, actionIndex)
                 }}/>
             })
           }

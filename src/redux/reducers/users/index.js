@@ -2,7 +2,9 @@ import * as Actions from '../../actions/users/constants'
 
 const initialState = {
   loading: false,
-  users: []
+  isSearching: false,
+  users: [],
+  searchedUsers: []
 }
 
 function usersReducer(state = initialState, action) {
@@ -33,22 +35,28 @@ function usersReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        isSearching: false,
+        searchedUsers: [],
         users
       }
     }
     case Actions.DELETE_USER: {
       const users = [ ...state.users ]
-      users.splice(action.payload, 1)
+      const index = users.findIndex((user) => user.id === action.payload)
+      users.splice(index, 1)
       return {
         ...state,
         loading: false,
+        isSearching: false,
+        searchedUsers: [],
         users
       }
     }
     case Actions.TOGGLE_FAVORITE_USER: {
       const { userIndex, actionIndex } = action.payload
       const users = [ ...state.users ]
-      const toggledUser = users.splice(userIndex, 1)[0]
+      const index = users.findIndex((user) => user.id === userIndex)
+      const toggledUser = users.splice(index, 1)[0]
       const favoriteUsers = users.filter((user) => {
         return user.actions.filter((action) => {
           return action.type === 'favorite'
@@ -69,7 +77,28 @@ function usersReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        isSearching: false,
+        searchedUsers: [],
         users: favoriteUsers.concat(nonFavoriteUsers)
+      }
+    }
+    case Actions.SEARCH_USER: {
+      const users = [ ...state.users ]
+      const searchedUsers = users.filter((user) => {
+        const name = `${user.firstName} ${user.lastName}`
+        return name.indexOf(action.payload) > -1
+      })
+      return {
+        ...state,
+        isSearching: true,
+        searchedUsers
+      }
+    }
+    case Actions.CLEAR_SEARCH_USER: {
+      return {
+        ...state,
+        isSearching: false,
+        searchedUsers: []
       }
     }
     default: {

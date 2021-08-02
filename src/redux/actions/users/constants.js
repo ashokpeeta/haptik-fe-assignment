@@ -4,3 +4,6 @@ export const GET_USERS_ERROR = 'GET_USERS_ERROR'
 export const ADD_USER = 'ADD_USER'
 export const DELETE_USER = 'DELETE_USER'
 export const TOGGLE_FAVORITE_USER = 'TOGGLE_FAVORITE_USER'
+export const SEARCH_USER = 'SEARCH_USER'
+export const CLEAR_SEARCH_USER = 'CLEAR_SEARCH_USER'
+
