@@ -1,5 +1,7 @@
 
-import { GET_USERS_ERROR, GET_USERS_LOADING, GET_USERS_SUCCESS } from './constants'
+import { GET_USERS_ERROR, GET_USERS_LOADING,
+  GET_USERS_SUCCESS, ADD_USER, DELETE_USER, TOGGLE_FAVORITE_USER
+} from './constants'
 import { v4 as uuidv4 } from 'uuid';
 
 const mockUserData = [
@@ -10,9 +12,11 @@ const mockUserData = [
     isFriend: true,
     actions: [
       {
-        type: 'non-favourite'
+        id: uuidv4(),
+        type: 'non-favorite'
       },
       {
+        id: uuidv4(),
         type: 'delete'
       }
     ]
@@ -21,12 +25,14 @@ const mockUserData = [
     id: uuidv4(),
     firstName: 'Amethius',
     lastName: 'Truebourn',
-    isFriend: false,
+    isFriend: true,
     actions: [
       {
-        type: 'non-favourite'
+        id: uuidv4(),
+        type: 'non-favorite'
       },
       {
+        id: uuidv4(),
         type: 'delete'
       }
     ]
@@ -49,4 +55,40 @@ export function getAllUsers(data) {
         })
       }
     }
+}
+
+export function addUser(firstName, lastName) {
+  return {
+    type: ADD_USER,
+    payload: {
+      id: uuidv4(),
+      firstName,
+      lastName,
+      isFriend: true,
+      actions: [
+        {
+          id: uuidv4(),
+          type: 'non-favorite'
+        },
+        {
+          id: uuidv4(),
+          type: 'delete'
+        }
+      ]
+    }
+  }
+}
+
+export function deleteUser(index) {
+  return {
+    type: DELETE_USER,
+    payload: index
+  }
+}
+
+export function toggleFavoriteUser(userIndex, actionIndex) {
+  return {
+    type: TOGGLE_FAVORITE_USER,
+    payload: { userIndex, actionIndex }
+  }
 }

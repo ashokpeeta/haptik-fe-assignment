@@ -15,19 +15,19 @@ const getIcon = (key) => {
   switch(key) {
     case 'delete':
       return '✖'
-    case 'favourite':
+    case 'favorite':
       return '💗'
-    case 'non-favourite':
+    case 'non-favorite':
       return '🖤'
     default: 
       return null
   }
 }
 
-const IconButton = ({ type }) => {
+const IconButton = ({ type, ...rest }) => {
   const icon = getIcon(type)
   return (
-    <IconBaseButton>{icon}</IconBaseButton>
+    <IconBaseButton {...rest} >{icon}</IconBaseButton>
   )
 }
 
