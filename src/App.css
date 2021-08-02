@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   padding: 1rem;
-  border-top: 1px solid #000;
+  border-top: 1px solid #ccc;
   justify-content: space-between;
 }
 
@@ -30,4 +30,9 @@
 .relation {
   font-weight: 100;
   font-size: small;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
 }
