@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from "./redux/actions/users";
 import './App.css';
-import { TextInput, IconButton, Title, Card, CardBody, CardHeader } from "./base-components";
+import { TextInput, Title, Card, CardBody, CardHeader } from "./base-components";
 import { User } from "./components/User";
 
 const App = () => {
@@ -21,7 +21,6 @@ const App = () => {
   return (
     <div className="App">
       <TextInput placeholder='enter a user' onKeyDown={_handleKeyDown}/>
-      <IconButton title="delete" type="delete" />
       <Card>
         <CardHeader>
           <Title>Friends List</Title>
