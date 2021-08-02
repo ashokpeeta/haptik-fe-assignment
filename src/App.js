@@ -11,7 +11,7 @@ const App = () => {
   const [hasDispatched, setHasDispatched] = useState(false)
   const _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      let name = e.target.value
+      let name = e.target.value.trim()
       let nameSplit = name.split(" ")
       if (nameSplit.length < 2) {
         alert("please enter a first name and last name separated by space")
