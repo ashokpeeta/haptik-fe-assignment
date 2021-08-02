@@ -5,7 +5,7 @@ const IconBaseButton = styled.button`
   border-radius: 3px;
   border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0 2em;
+  margin: 0 0.5em;
   height: 2em;
   width: 2rem;
 }
