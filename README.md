@@ -1,3 +1,12 @@
+# The site is hosted at Netlify
+https://adoring-jang-645e70.netlify.app/
+
+# Site Functionality
+* Need to have first name and last name to search or perform actions on the user
+* Search for an user and if the user is present in the list will be shown the user else you can press enter that will add the user to the list
+* you can perform delete, toggle-fovaorite actions on the user lists
+* simple window.alerts are being used to display the checks like entering only first name, trying to add a user who is already your friends list etc.
+
 # Assumptions for the sake of brevity
 > what's not implemented
 * Will not be integrating routes and using a single route to display the necessary functionality for task.
