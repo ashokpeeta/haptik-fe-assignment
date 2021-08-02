@@ -20,7 +20,6 @@ const App = () => {
   })
   return (
     <div className="App">
-      <TextInput placeholder='enter a user' onKeyDown={_handleKeyDown}/>
       <Card>
         <CardHeader>
           <Title>Friends List</Title>
