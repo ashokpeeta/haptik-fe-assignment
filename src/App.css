@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: row;
   padding: 1rem;
-  
+  border-top: 1px solid #000;
 }
 
 .details {
@@ -20,4 +20,13 @@
 
 .search{
   display: flex;
+}
+
+.name {
+  font-weight: 900;
+}
+
+.relation {
+  font-weight: 100;
+  font-size: small;
 }
