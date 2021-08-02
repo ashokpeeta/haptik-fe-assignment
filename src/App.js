@@ -26,7 +26,7 @@ const App = () => {
       dispatch(getAllUsers())
       setHasDispatched(true)
     }
-  })
+  }, [usersData.length, hasDispatched, dispatch])
   return (
     <div className="App">
       <Card>
