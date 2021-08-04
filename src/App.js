@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers, addUser, searchUsers, clearSearchUser } from "./redux/actions/users";
 import './App.css';
-import { TextInput, Title, Card, CardBody, CardHeader } from "./base-components";
+import { TextInput, Title, Card, CardBody, CardHeader, IconTextButton } from "./base-components";
 import { User, Pagination } from "./components";
 
 const App = () => {
@@ -13,21 +13,20 @@ const App = () => {
   const [hasDispatched, setHasDispatched] = useState(false)
   const [displayedData, setDisplayedData] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
+  // eslint-disable-next-line no-unused-vars
   const [itemsPerPage, setItemsPerPage] = useState(4)
-  const _handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      let name = e.target.value.trim()
-      let nameSplit = name.split(" ")
-      if (isSearching && searchedUsers.length === 0) {
-        if (nameSplit.length < 2) {
-          alert("please enter a first name and last name separated by space")
-        } else {
-          dispatch(addUser(nameSplit[0], nameSplit.slice(1).join("")))
-          e.target.value = '' // can be moved to a controlled component state
-        }
-      } else if(isSearching && searchedUsers.length > 0) {
-        alert("User already in the friend list, please adjust your search query")
+  const handleAddition = (e) => {
+    let name = searchInput.current.value
+    let nameSplit = name.split(" ")
+    if (isSearching && searchedUsers.length === 0) {
+      if (nameSplit.length < 2) {
+        alert("please enter a first name and last name separated by space")
+      } else {
+        dispatch(addUser(nameSplit[0], nameSplit.slice(1).join("")))
+        e.target.value = '' // can be moved to a controlled component state
       }
+    } else if(isSearching && searchedUsers.length > 0) {
+      alert("User already in the friend list, please adjust your search query")
     }
   }
   const _handleChange = (e) => {
@@ -43,7 +42,6 @@ const App = () => {
   }
   const getPagination = () => {
     const totalCount = isSearching ? searchedUsers.length : usersData.length
-    if (totalCount < 5) return null;
     return (
       <Pagination total={Math.ceil(totalCount/4)} current={currentPage} setCurrentPage={setCurrentPage}/>
     )
@@ -76,7 +74,6 @@ const App = () => {
           <div className="search">
             <TextInput
               placeholder="Enter your friends's name"
-              onKeyDown={_handleKeyDown}
               onChange={_handleChange}
               ref={searchInput} 
             />
@@ -85,6 +82,12 @@ const App = () => {
             displayedData.map((user, index) => {
               return <User {...user} key={user.id} userIndex={index}/>
             })
+          }
+          {
+            isSearching && displayedData.length === 0 &&
+            <div className="addNewFriend">
+              <IconTextButton className="add-new-friend-button" backgroundColor="palevioletred" color="#ccc" type='add' text='Add new friend' onClick={handleAddition}/>
+            </div>
           }
           {
             getPagination()
