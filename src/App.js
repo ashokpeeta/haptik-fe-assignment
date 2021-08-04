@@ -13,6 +13,7 @@ const App = () => {
   const [hasDispatched, setHasDispatched] = useState(false)
   const [displayedData, setDisplayedData] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
+  // eslint-disable-next-line no-unused-vars
   const [itemsPerPage, setItemsPerPage] = useState(4)
   const _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
