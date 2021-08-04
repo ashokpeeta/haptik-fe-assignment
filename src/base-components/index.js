@@ -1,4 +1,4 @@
 export { TextInput } from './TextInput'
-export { IconButton } from './IconButton'
+export { IconButton, Button } from './Button'
 export { Title } from './Title'
 export { Card, CardBody, CardHeader } from './Card'
