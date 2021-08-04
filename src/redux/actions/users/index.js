@@ -8,8 +8,72 @@ import { v4 as uuidv4 } from 'uuid';
 const mockUserData = [
   {
     id: uuidv4(),
-    firstName: 'Johnathan',
-    lastName: 'Wick',
+    firstName: 'Johnathan1',
+    lastName: 'Wick1',
+    isFriend: true,
+    actions: [
+      {
+        id: uuidv4(),
+        type: 'non-favorite'
+      },
+      {
+        id: uuidv4(),
+        type: 'delete'
+      }
+    ]
+  },
+  {
+    id: uuidv4(),
+    firstName: 'Johnathan2',
+    lastName: 'Wick2',
+    isFriend: true,
+    actions: [
+      {
+        id: uuidv4(),
+        type: 'non-favorite'
+      },
+      {
+        id: uuidv4(),
+        type: 'delete'
+      }
+    ]
+  },
+  {
+    id: uuidv4(),
+    firstName: 'Johnathan3',
+    lastName: 'Wick3',
+    isFriend: true,
+    actions: [
+      {
+        id: uuidv4(),
+        type: 'non-favorite'
+      },
+      {
+        id: uuidv4(),
+        type: 'delete'
+      }
+    ]
+  },
+  {
+    id: uuidv4(),
+    firstName: 'Johnathan4',
+    lastName: 'Wick4',
+    isFriend: true,
+    actions: [
+      {
+        id: uuidv4(),
+        type: 'non-favorite'
+      },
+      {
+        id: uuidv4(),
+        type: 'delete'
+      }
+    ]
+  },
+  {
+    id: uuidv4(),
+    firstName: 'Johnathan5',
+    lastName: 'Wick5',
     isFriend: true,
     actions: [
       {

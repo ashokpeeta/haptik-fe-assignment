@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers, addUser, searchUsers, clearSearchUser } from "./redux/actions/users";
 import './App.css';
 import { TextInput, Title, Card, CardBody, CardHeader } from "./base-components";
-import { User } from "./components/User";
+import { User, Pagination } from "./components";
 
 const App = () => {
   const dispatch = useDispatch()
@@ -11,6 +11,9 @@ const App = () => {
   const searchInput = useRef(null);
   const { isSearching } = useSelector((state) => state.users)
   const [hasDispatched, setHasDispatched] = useState(false)
+  const [displayedData, setDisplayedData] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(4)
   const _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       let name = e.target.value.trim()
@@ -38,11 +41,25 @@ const App = () => {
   const clearSearch = () => {
     searchInput.current.value = ''
   }
+  const getPagination = () => {
+    const totalCount = isSearching ? searchedUsers.length : usersData.length
+    if (totalCount < 5) return null;
+    return (
+      <Pagination total={Math.ceil(totalCount/4)} current={currentPage} setCurrentPage={setCurrentPage}/>
+    )
+  }
   useEffect(() => {
     if (!isSearching) {
       clearSearch()
     }
   }, [isSearching])
+  useEffect(() => {
+    if (isSearching) {
+      setDisplayedData(searchedUsers.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage))
+    } else {
+      setDisplayedData(usersData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage))
+    }
+  }, [usersData, searchedUsers, currentPage, isSearching, itemsPerPage])
   useEffect(() => {
     if (usersData?.length === 0 && !hasDispatched) {
       dispatch(getAllUsers())
@@ -65,15 +82,12 @@ const App = () => {
             />
           </div>
           {
-            isSearching ? 
-            searchedUsers.map((user, index) => {
-              return <User {...user} key={user.id} userIndex={index}/>
-              
-            })
-            :
-            usersData.map((user, index) => {
+            displayedData.map((user, index) => {
               return <User {...user} key={user.id} userIndex={index}/>
             })
+          }
+          {
+            getPagination()
           }
         </CardBody>
       </Card>

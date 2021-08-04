@@ -36,3 +36,15 @@
   display: flex;
   align-items: center;
 }
+
+.pagination {
+  padding: 1em;
+  border-top: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.paginationLeft {
+  justify-content: flex-start;
+}
